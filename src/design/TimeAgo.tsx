@@ -11,9 +11,8 @@ export const TimeAgo = ({ date }: { date: Date }) => {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setFormattedEnglish(() => formatDistance(date, subHours(new Date(), 3)));
-            setFormattedPolish(() => formatDistance(date, subHours(new Date(), 3), { locale: pl }));
-            console.log('.')
+            setFormattedEnglish(() => formatDistance(date, new Date()));
+            setFormattedPolish(() => formatDistance(date, new Date(), { locale: pl }));
         }, 1000);
 
         return () => clearInterval(intervalId);
