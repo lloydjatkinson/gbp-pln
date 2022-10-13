@@ -1,0 +1,15 @@
+---
+export type Props = {
+    readonly locale: 'en-GB' | 'pl-PL';
+    readonly symbol: 'GBP' | 'PLN';
+    readonly value: number;
+};
+
+const { locale, symbol, value } = Astro.props as Props;
+
+const formatted = new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: symbol,
+}).format(value);
+---
+<span>{ formatted }</span>

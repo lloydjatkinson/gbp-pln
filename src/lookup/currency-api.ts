@@ -9,7 +9,7 @@ export type Info = Readonly<{
     timestamp: number;
 }>;
 
-export type FixerCurrencyResponse = Readonly<{
+export type CurrencyResponse = Readonly<{
     date: Date;
     info: Info;
     query: Query;
@@ -17,13 +17,30 @@ export type FixerCurrencyResponse = Readonly<{
     success: boolean;
 }>;
 
-export const fetchCurrency = async (from: string, to: string, amount: number) => {
-    const response = await fetch(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`, {
+export const fetchExchangeRate = async (from: string, to: string): Promise<CurrencyResponse> => {
+    const response = await fetch(`https://api.exchangerate.host/convert?to=${to}&from=${from}`, {
         redirect: 'follow',
         headers: {
             'apikey': import.meta.env.FIXER_API_KEY,
         }
     });
+    
+    return await response.json() as CurrencyResponse;
 
-    const currency = await response.json() as FixerCurrencyResponse;
+    // const dev: CurrencyResponse = {
+    //     "date": new Date("2022-10-13"),
+    //     "info": {
+    //       "rate": 5.604235,
+    //       "timestamp": 1665664624
+    //     },
+    //     "query": {
+    //       "amount": 1,
+    //       "from": "GBP",
+    //       "to": "PLN"
+    //     },
+    //     "result": 5.604235,
+    //     "success": true
+    //   }
+
+    //   return await dev;
 };
