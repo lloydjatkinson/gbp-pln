@@ -1,9 +1,10 @@
 ---
+import { format } from 'date-fns';
+
 import Layout from '../layouts/Layout.astro';
 import Currency from '../design/Currency.astro';
-
 import { fetchExchangeRate } from '../lookup/currency-api';
-import { TimeAgo } from '../design/TimeAgo';
+
 
 const { result } = await fetchExchangeRate('GBP', 'PLN');
 
@@ -35,11 +36,11 @@ const pln = scale.map((value) => {
 	};
 });
 
-const updatedAt = new Date();
+const updatedAt = format(new Date(), 'h:mm a');
 ---
 
 <Layout title="Current £ to zł conversion rate">
-	<TimeAgo date={ updatedAt } client:idle />
+	<span>Last checked at { updatedAt }</span>
 	<div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
 		<div class="flex flex-col gap-5 px-4 py-5 bg-white shadow-lg rounded-lg">
 			<div class="flex justify-between">
