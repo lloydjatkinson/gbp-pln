@@ -18,7 +18,7 @@ export type CurrencyResponse = Readonly<{
 }>;
 
 export const fetchExchangeRate = async (from: string, to: string): Promise<CurrencyResponse> => {
-    const response = await fetch(`https://api.exchangerate.host/convert?to=${to}&from=${from}`, {
+    const response = await fetch(`http://api.exchangerate.host/convert?to=${to}&from=${from}&amount=1&access_key=${process.env.API_KEY!}`, {
         redirect: 'follow'
     });
     
