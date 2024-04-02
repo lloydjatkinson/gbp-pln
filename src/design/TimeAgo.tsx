@@ -2,8 +2,7 @@ import 'preact/debug';
 import 'preact/devtools';
 import { useState, useEffect } from 'preact/hooks';
 import { formatDistance, subHours } from 'date-fns';
-// @ts-expect-error Astro importing some ES modules from node_modules isn't working.
-import { pl } from 'date-fns/locale/index.js';
+import { pl } from 'date-fns/locale';
 
 export const TimeAgo = ({ date }: { date: Date }) => {
     const [formattedEnglish, setFormattedEnglish] = useState(formatDistance(date, new Date()));

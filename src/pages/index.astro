@@ -53,8 +53,8 @@ const updatedAt = format(new Date(), 'h:mm a');
 				{
 					gbp.map((item) => (
 						<div class="grid grid-cols-2">
-							<Currency locale="en-GB" symbol="GBP" value={ item.value } />
-							<Currency locale="pl-PL" symbol="PLN" value={ item.converted } />
+							<Currency locale="en-GB" symbol="GBP" value={item.value} />
+							<Currency locale="pl-PL" symbol="PLN" value={item.converted} />
 						</div>
 					))
 				}
@@ -69,8 +69,8 @@ const updatedAt = format(new Date(), 'h:mm a');
 				{
 					pln.map((item) => (
 						<div class="grid grid-cols-2">
-							<Currency locale="pl-PL" symbol="PLN" value={ item.value } />
-							<Currency locale="en-GB" symbol="GBP" value={ item.converted } />
+							<Currency locale="pl-PL" symbol="PLN" value={item.value} />
+							<Currency locale="en-GB" symbol="GBP" value={item.converted} />
 						</div>
 					))
 				}
